@@ -1,0 +1,184 @@
+/* إضافة تنسيقات CSS للتنقل المتجاوب */
+.nav-toggle {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    position: absolute;
+    top: 10px;
+    right: 15px;
+}
+
+.nav-toggle span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 5px 0;
+    background-color: var(--primary-color);
+    transition: transform 0.3s ease;
+}
+
+/* زر العودة إلى الأعلى */
+.back-to-top {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    z-index: 1000;
+}
+
+.back-to-top.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* زر الطباعة */
+.print-button {
+    background-color: var(--secondary-color);
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    margin-bottom: 1rem;
+    display: inline-block;
+}
+
+.print-button:hover {
+    background-color: var(--primary-color);
+}
+
+/* تحسين عرض الجداول على الأجهزة المحمولة */
+.table-responsive {
+    overflow-x: auto;
+    margin-bottom: 1.5rem;
+}
+
+/* أزرار التنقل بين الصفحات */
+.navigation-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2rem;
+    flex-wrap: wrap;
+}
+
+/* تنسيقات للأجهزة المحمولة */
+@media (max-width: 768px) {
+    .nav-toggle {
+        display: block;
+    }
+    
+    nav ul {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+    }
+    
+    nav.nav-open ul {
+        display: flex;
+    }
+    
+    nav.nav-open .nav-toggle span:first-child {
+        transform: rotate(45deg) translate(5px, 5px);
+    }
+    
+    nav.nav-open .nav-toggle span:nth-child(2) {
+        opacity: 0;
+    }
+    
+    nav.nav-open .nav-toggle span:last-child {
+        transform: rotate(-45deg) translate(5px, -5px);
+    }
+    
+    .navigation-buttons {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .navigation-buttons .btn {
+        text-align: center;
+    }
+    
+    .feature-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* تحسينات إضافية للتصميم المتجاوب */
+@media (max-width: 480px) {
+    header h1 {
+        font-size: 1.8rem;
+    }
+    
+    header .subtitle {
+        font-size: 1rem;
+    }
+    
+    h2 {
+        font-size: 1.5rem;
+    }
+    
+    h3 {
+        font-size: 1.3rem;
+    }
+}
+
+/* تنسيقات لوضع الطباعة */
+@media print {
+    .nav-toggle, 
+    .back-to-top, 
+    .print-button,
+    nav,
+    footer {
+        display: none !important;
+    }
+    
+    body {
+        font-size: 12pt;
+        color: black;
+        background-color: white;
+    }
+    
+    a {
+        text-decoration: none;
+        color: black;
+    }
+    
+    .container {
+        width: 100%;
+        max-width: none;
+        padding: 0;
+        margin: 0;
+    }
+    
+    header {
+        background-color: white;
+        color: black;
+        padding: 1rem 0;
+        text-align: center;
+        border-bottom: 1px solid #ddd;
+    }
+    
+    section {
+        break-inside: avoid;
+        page-break-inside: avoid;
+        margin-bottom: 1rem;
+        border: none;
+        box-shadow: none;
+    }
+    
+    h2, h3, h4 {
+        color: black;
+    }
+}
